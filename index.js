@@ -5,24 +5,8 @@ const digits = /\d+/g;
 const now = new Date().getTime();
 // refer to list of makes here https://au.yachtworld.com/core/listing/cache/dimensionValues.jsp?sm=3&searchtype=advancedsearch&Ntk=boatsUK&ftid=0&N=2279+3945&enid=0&toYear=2010&hmid=0&boatsAddedSelected=-1&slim=quick&currencyid=1008&luom=126&toLength=60&Ne=15&fromLength=40&cit=true&fromYear=1990
 const makes = [
-    'Bavaria',
-    'Amel',
-    'Hallberg-Rassy',
-    'Beneteau',
-    'Oyster',
-    'Moody',
-    'Najad',
-    'Westerly',
-    'Dehler',
-    'Hanse',
-    'Dufour',
-    'Elan',
-    'Catalina',
-    'Grand Soleil',
-    'Hunter',
-    'Island Packet',
-    'Jeanneau',
-    'Wauquiez'
+    'Leopard',
+    'Lagoon'
 ];
 const hasMore = async (page) => {
     const searchResultsCount = await page.$('div.searchResultsCount');
@@ -75,7 +59,7 @@ const parseListings = async (page, make) => {
     });
     let prices = []
     for(let make of makes){
-        const url = `https://au.yachtworld.com/core/listing/cache/searchResults.jsp?is=false&sm=3&searchtype=advancedsearch&Ntk=boatsUK&ftid=0&enid=0&toYear=2010&type=%28Sail%29&hmid=0&boatsAddedSelected=-1&slim=quick&currencyid=1008&luom=126&toLength=60&cit=true&fromLength=38&fromYear=1990&man=${make}&ps=50&No=0&Ns=PBoat_sortByPriceAsc|0`;
+        const url = `https://au.yachtworld.com/core/listing/cache/searchResults.jsp?is=false&sm=3&searchtype=advancedsearch&man=${make}&Ntk=boatsUK&ftid=0&N=2279&enid=101&hmid=0&boatsAddedSelected=-1&slim=quick&currencyid=100&fromPrice=100000&luom=126&toLength=45&cit=true&fromLength=38&fromYear=2015&toYear=2015`;
         await page.goto(url, {
             waitUntil: "networkidle2"
         });
